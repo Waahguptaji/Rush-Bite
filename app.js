@@ -1,15 +1,5 @@
-/*
-<div id="parent">
-    <div id="child">
-        <h1>I am a h1 tag</h1>
-        <h2>I am a h2 tag</h2>
-    </div>
-    <div id="child2">
-        <h1>I am a h1 tag</h1>
-        <h2>I am a h2 tag</h2>
-    </div>
-</div>
-*/
+import React from "react"; //importing React from node module 
+import ReactDOM from "react-dom/client"; //importing React from node module of react
 
 const parent = React.createElement("div",
     { id: "parent" }, [
@@ -23,7 +13,6 @@ const parent = React.createElement("div",
     ]),
 ]);
 
-console.log(parent);//Object
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent);
