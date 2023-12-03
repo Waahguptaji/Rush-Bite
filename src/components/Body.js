@@ -1,6 +1,7 @@
 import RestuarantCard from "./RestuarantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   //Local State Variable - Super powerful Variable
@@ -19,7 +20,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6461695&lng=75.8163521&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6461695&lng=75.8163521&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -83,7 +84,12 @@ const Body = () => {
           (
             restaurant //Map function to iterate over the data dynamically
           ) => (
-            <RestuarantCard resData={restaurant} />
+            <Link
+              key={restaurant.info.id}
+              to={"/restuarants/" + restaurant.info.id}
+            >
+              <RestuarantCard resData={restaurant} />{" "}
+            </Link>
           )
         )}
       </div>
