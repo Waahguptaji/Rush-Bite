@@ -2,6 +2,7 @@ import RestuarantCard from "./RestuarantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   //Local State Variable - Super powerful Variable
@@ -10,6 +11,8 @@ const Body = () => {
   const [filterRestuarants, setfilterRestuarants] = useState([]);
 
   const [searchText, setsearchText] = useState("");
+
+  const onlineStatus = useOnlineStatus();
 
   //Whenever the state variable updates, react triggers a reconcilation cycle(re-renders the component.
   console.log("body Renders");
@@ -37,6 +40,10 @@ const Body = () => {
       json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  if (onlineStatus === false) {
+    return <h1>You Are Offline Sorry. Please Check Your Connection!</h1>;
+  }
 
   //Conditional Rendering
   if (listofRestuarants?.length === 0) {

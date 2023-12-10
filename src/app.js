@@ -8,6 +8,17 @@ import AboutUs from "./components/AboutUs";
 import Error from "./components/Error";
 import { Outlet } from "react-router-dom";
 import RestuarantMenu from "./components/RestuarantMenu";
+import { Suspense } from "react";
+
+import { lazy } from "react";
+import Shimmer from "./components/Shimmer";
+
+//We will not do this because we want it to load when it clicked
+
+/*import Grocery from "./components/Grocery";*/
+
+//Dynamic Import / LazyLoading
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
   return (
@@ -38,6 +49,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/restuarants/:resId",
         element: <RestuarantMenu />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Grocery />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <Error />,
