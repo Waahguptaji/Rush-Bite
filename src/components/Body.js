@@ -32,12 +32,12 @@ const Body = () => {
 
     setlistofRestuarants(
       //optional Chaining
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
     setfilterRestuarants(
       //optional Chaining
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -52,17 +52,18 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex items-center mt-16 ">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className=" border border-solid border-black rounded-md "
             value={searchText}
             onChange={(e) => {
               setsearchText(e.target.value);
             }}
           ></input>
           <button
+            className="px-4 py-1 bg-pink-tone m-4 rounded-lg "
             onClick={() => {
               //filter the resturant cards and update the UI
               const filteredRestuarant = listofRestuarants.filter((res) =>
@@ -74,19 +75,21 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            let filterList = listofRestuarants.filter(
-              (res) => res.info.avgRating > 4
-            );
-            setfilterRestuarants(filterList);
-          }}
-        >
-          Top-Rated Restaurant
-        </button>
+        <div>
+          <button
+            className="px-4 py-1 bg-pink-tone m-4 rounded-md  "
+            onClick={() => {
+              let filterList = listofRestuarants.filter(
+                (res) => res.info.avgRating > 4
+              );
+              setfilterRestuarants(filterList);
+            }}
+          >
+            Top-Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filterRestuarants.map(
           (
             restaurant //Map function to iterate over the data dynamically
