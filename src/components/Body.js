@@ -32,12 +32,12 @@ const Body = () => {
 
     setlistofRestuarants(
       //optional Chaining
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
 
     setfilterRestuarants(
       //optional Chaining
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -52,7 +52,7 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="flex items-center mt-16 ">
+      <div className="flex items-center  ">
         <div className="m-4 p-4">
           <input
             type="text"

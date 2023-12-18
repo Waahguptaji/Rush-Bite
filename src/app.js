@@ -1,4 +1,4 @@
-import React from "react"; //importing React from node module
+import React, { useEffect, useState } from "react"; //importing React from node module
 import ReactDOM from "react-dom/client"; //importing React from node module of react
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -12,6 +12,7 @@ import { Suspense } from "react";
 
 import { lazy } from "react";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 
 //We will not do this because we want it to load when it clicked
 
@@ -21,11 +22,29 @@ import Shimmer from "./components/Shimmer";
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  //Authentication
+  useEffect(() => {
+    //Make an API call to get Username and data
+    const data = {
+      name: "Sahil Gupta",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    //DefaultValue
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+      //SahilGupta
+      <div className="app">
+        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+          //Elon Musk
+          <Header />
+        </UserContext.Provider>
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
