@@ -23,7 +23,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.6461695&lng=75.8163521&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D22.6461695%26lng%3D75.8163521%26is-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -32,12 +32,26 @@ const Body = () => {
 
     setlistofRestuarants(
       //optional Chaining
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants ||
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
     );
 
     setfilterRestuarants(
       //optional Chaining
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants ||
+        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants ||
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
     );
   };
 

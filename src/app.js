@@ -13,6 +13,9 @@ import { Suspense } from "react";
 import { lazy } from "react";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/redux/appStore";
+import Cart from "./components/Cart";
 
 //We will not do this because we want it to load when it clicked
 
@@ -34,17 +37,16 @@ const AppLayout = () => {
   }, []);
 
   return (
-    //DefaultValue
-    <UserContext.Provider value={{ loggedInUser: userName }}>
-      //SahilGupta
-      <div className="app">
-        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
-          //Elon Musk
-          <Header />
-        </UserContext.Provider>
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName }}>
+        <div className="app">
+          <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+            <Header />
+          </UserContext.Provider>
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -68,6 +70,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restuarants/:resId",
         element: <RestuarantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/grocery",
