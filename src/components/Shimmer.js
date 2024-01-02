@@ -1,8 +1,8 @@
 const Shimmer = () => {
   return (
     <>
-      <section className="text-gray-700 body-font">
-        <div className="container px-5 py-24 ">
+      <section className="text-gray-700 body-font flex flex-wrap ">
+        <div className=" px-5 py-24 ">
           <div className="flex flex-wrap -m-4">
             <div className="m-4 p-4 w-[250px] h-auto rounded-lg">
               <div className="h-full border-2 border-gray-200 rounded-lg overflow-hidden">

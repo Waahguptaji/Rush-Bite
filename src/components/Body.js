@@ -3,23 +3,25 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Body = () => {
   //Local State Variable - Super powerful Variable
   const [listofRestuarants, setlistofRestuarants] = useState([]);
-
   const [filterRestuarants, setfilterRestuarants] = useState([]);
 
   const [searchText, setsearchText] = useState("");
-
   const onlineStatus = useOnlineStatus();
+
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1); // Initial page
 
   //Whenever the state variable updates, react triggers a reconcilation cycle(re-renders the component.
   console.log("body Renders");
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []); //when page changes it loads more
 
   const fetchData = async () => {
     const data = await fetch(
@@ -30,29 +32,22 @@ const Body = () => {
 
     console.log(json);
 
-    setlistofRestuarants(
-      //optional Chaining
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants ||
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants ||
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants ||
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-    );
+    const restaurantsData =
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
 
-    setfilterRestuarants(
-      //optional Chaining
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants ||
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants ||
-        json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants ||
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-    );
+    if (!restaurantsData || restaurantsData.length === 0) {
+      setHasMore(false); // No more data available
+      return;
+    }
+
+    setlistofRestuarants([...listofRestuarants, ...restaurantsData]); //it is taking each new array restuarant data on each fetch and combining it into new one array listofResturant
+    setfilterRestuarants([...filterRestuarants, ...restaurantsData]);
+    setPage(page + 1); // Increment page number
+  };
+
+  const fetchMoreData = async () => {
+    fetchData();
   };
 
   if (onlineStatus === false) {
@@ -103,20 +98,29 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap">
-        {filterRestuarants.map(
-          (
-            restaurant //Map function to iterate over the data dynamically
-          ) => (
-            <Link
-              key={restaurant.info.id}
-              to={"/restuarants/" + restaurant.info.id}
-            >
-              <RestuarantCard resData={restaurant} />{" "}
-            </Link>
-          )
-        )}
-      </div>
+      {/* InfiniteScroll using react-component-infinite-scroll */}
+      <InfiniteScroll
+        dataLength={filterRestuarants.length}
+        next={fetchMoreData}
+        hasMore={hasMore}
+        loader={<Shimmer />} // Loader component while fetching data
+        endMessage={<p>No more restaurants to show.</p>} // Message when no more data available
+      >
+        <div className="flex flex-wrap">
+          {filterRestuarants.map(
+            (
+              restaurant //Map function to iterate over the data dynamically
+            ) => (
+              <Link
+                key={restaurant.info.id}
+                to={"/restuarants/" + restaurant.info.id}
+              >
+                <RestuarantCard resData={restaurant} />
+              </Link>
+            )
+          )}
+        </div>
+      </InfiniteScroll>
     </div>
   );
 };

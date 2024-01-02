@@ -19,7 +19,12 @@ const Header = () => {
   return (
     <div className="header flex bg-white justify-between shadow-lg ">
       <div className="logo-container ">
-        <img className="w-48 h-24 object-cover" src={resLogo} />
+        <NavLink to="/">
+          <img
+            className="hover:scale-105 transition-all duration-200 ease-in w-48 h-24 object-cover"
+            src={resLogo}
+          />
+        </NavLink>
       </div>
       <div className="flex items-center ">
         <ul className="flex justify-between">
