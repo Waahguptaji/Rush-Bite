@@ -5,3 +5,7 @@
 .active {
   color: #e8a998;
 }
+
+.clipPath {
+  clip-path: polygon(20% 0px, 100% 0px, 100% 100%, 0px 100%);
+}

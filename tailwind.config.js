@@ -16,6 +16,7 @@ module.exports = {
         "dark-gray": "#222222",
         "pink-tone": "#E8A998",
         "light-gray": "#3d4152",
+        "mid-pink": "#fff0ed",
         // Add more custom colors as needed
       },
     },

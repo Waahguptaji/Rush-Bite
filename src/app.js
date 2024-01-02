@@ -17,13 +17,6 @@ import { Provider } from "react-redux";
 import appStore from "./utils/redux/appStore";
 import Cart from "./components/Cart";
 
-//We will not do this because we want it to load when it clicked
-
-/*import Grocery from "./components/Grocery";*/
-
-//Dynamic Import / LazyLoading
-const Grocery = lazy(() => import("./components/Grocery"));
-
 const AppLayout = () => {
   const [userName, setUserName] = useState();
 
@@ -74,14 +67,6 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
-      },
-      {
-        path: "/grocery",
-        element: (
-          <Suspense fallback={<Shimmer />}>
-            <Grocery />
-          </Suspense>
-        ),
       },
     ],
     errorElement: <Error />,

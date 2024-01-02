@@ -17,7 +17,7 @@ const Header = () => {
   console.log(cartItems);
 
   return (
-    <div className="header flex bg-white justify-between shadow-lg ">
+    <div className="header flex bg-white justify-between shadow-xl z-10">
       <div className="logo-container ">
         <NavLink to="/">
           <img
@@ -28,17 +28,11 @@ const Header = () => {
       </div>
       <div className="flex items-center ">
         <ul className="flex justify-between">
-          <li className="px-4 font-serif text-lg text-light-gray">
-            {onlineStatus ? "🟢" : "🔴"}
-          </li>
           <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone ">
             <NavLink to="/">Home</NavLink>{" "}
           </li>
           <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
             <NavLink to="/aboutUs">About</NavLink>
-          </li>
-          <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
-            <NavLink to="/grocery">Grocery</NavLink>
           </li>
           <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
             <NavLink to="/contact">Contact Us</NavLink>
@@ -57,6 +51,9 @@ const Header = () => {
           </li>
           <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
             {loggedInUser}
+          </li>
+          <li className="px-4 font-serif text-lg text-light-gray">
+            {onlineStatus ? "🟢" : "🔴"}
           </li>
           <button
             className="login px-4 pr-8 font-serif text-lg text-light-gray hover:text-pink-tone"
