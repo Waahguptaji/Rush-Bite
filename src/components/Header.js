@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton, LogoutButton, Profile } from "./Auth";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
@@ -11,6 +13,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   const { loggedInUser } = useContext(UserContext);
+  const { isAuthenticated } = useAuth0();
 
   //Subscribing to store using selector
   const cartItems = useSelector((store) => store.cart.items);
@@ -27,7 +30,7 @@ const Header = () => {
         </NavLink>
       </div>
       <div className="flex items-center ">
-        <ul className="flex justify-between">
+        <ul className="flex justify-between items-center">
           <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone ">
             <NavLink to="/">Home</NavLink>{" "}
           </li>
@@ -49,24 +52,21 @@ const Header = () => {
               </a>
             </NavLink>
           </li>
-          <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
-            {loggedInUser}
-          </li>
+          {isAuthenticated && (
+            <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
+              (
+              <>
+                <Profile />
+              </>
+              )
+            </li>
+          )}
           <li className="px-4 font-serif text-lg text-light-gray">
             {onlineStatus ? "🟢" : "🔴"}
           </li>
-          <button
-            className="login px-4 pr-8 font-serif text-lg text-light-gray hover:text-pink-tone"
-            onClick={() => {
-              if (btnNameReact === "Login") {
-                setbtnNameReact("Logout");
-              } else {
-                setbtnNameReact("Login");
-              }
-            }}
-          >
-            {btnNameReact}
-          </button>
+          <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
+            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+          </li>
         </ul>
       </div>
     </div>

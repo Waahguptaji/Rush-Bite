@@ -8,14 +8,12 @@ import AboutUs from "./components/AboutUs";
 import Error from "./components/Error";
 import { Outlet } from "react-router-dom";
 import RestuarantMenu from "./components/RestuarantMenu";
-import { Suspense } from "react";
 
-import { lazy } from "react";
-import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/redux/appStore";
 import Cart from "./components/Cart";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
@@ -30,16 +28,24 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <Provider store={appStore}>
-      <UserContext.Provider value={{ loggedInUser: userName }}>
-        <div className="app">
-          <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
-            <Header />
-          </UserContext.Provider>
-          <Outlet />
-        </div>
-      </UserContext.Provider>
-    </Provider>
+    <Auth0Provider
+      domain="dev-jc6bd0mu1y5madbo.us.auth0.com"
+      clientId="EHVveXAQTuFwZZVKya4erhdHfmg7p4wW"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <Provider store={appStore}>
+        <UserContext.Provider value={{ loggedInUser: userName }}>
+          <div className="app">
+            <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+              <Header />
+            </UserContext.Provider>
+            <Outlet />
+          </div>
+        </UserContext.Provider>
+      </Provider>
+    </Auth0Provider>
   );
 };
 
