@@ -1,5 +1,7 @@
 import ItemList from "./ItemList";
 import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 const RestuarantCategory = ({ data, showIndex, setShowIndex, dummy }) => {
   const handleClick = () => {
@@ -8,15 +10,15 @@ const RestuarantCategory = ({ data, showIndex, setShowIndex, dummy }) => {
   return (
     <div>
       {/* {Accordian Header} */}
-      <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4 ">
+      <div className="w-6/12 mx-auto  bg-white shadow-lg my-4 p-4 ">
         <div
-          className="flex justify-between cursor-pointer"
+          className="flex items-center justify-between cursor-pointer"
           onClick={handleClick}
         >
           <span className="font-bold text-lg">
             {data.title} ({data.itemCards.length})
           </span>
-          {showIndex ? <span>⬆</span> : <span>⬇</span>}
+          {showIndex ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </div>
         {/* {Accordian body} */}
         {/* If both true then show */}

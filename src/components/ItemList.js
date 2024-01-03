@@ -8,6 +8,7 @@ const ItemList = ({ items, dummy }) => {
   const handleAddItem = (item) => {
     //dispatching an action
     dispatch(addItems(item));
+    console.log("Got Clicked");
   };
 
   return (

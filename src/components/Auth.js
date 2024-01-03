@@ -35,11 +35,12 @@ export const Profile = () => {
     return <div>Loading ...</div>;
   }
 
+  const username = user.name.split("@")[0];
+
   return (
     isAuthenticated && (
       <div>
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
+        <h2>Hi, {username}</h2>
       </div>
     )
   );

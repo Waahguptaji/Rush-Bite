@@ -20,7 +20,7 @@ const Header = () => {
   console.log(cartItems);
 
   return (
-    <div className="header flex bg-white justify-between shadow-xl z-10">
+    <div className="header flex bg-white justify-between shadow-lg z-10">
       <div className="logo-container ">
         <NavLink to="/">
           <img
