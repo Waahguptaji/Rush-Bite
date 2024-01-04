@@ -1,15 +1,22 @@
 import { Selector, useDispatch, useSelector } from "react-redux";
 import { CDN_URL } from "../utils/constants";
-import { clearCart } from "../utils/redux/cartSlice";
+import { clearCart, removeItems } from "../utils/redux/cartSlice";
+import { IoTrashBin } from "react-icons/io5";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
 
   const dispatch = useDispatch();
 
   const handleClearItem = () => {
     //dispatching an action
     dispatch(clearCart());
+  };
+
+  const handleRemoveItem = (item) => {
+    //dispatching an action
+    dispatch(removeItems(item.card.info.id));
   };
 
   return (
@@ -33,7 +40,14 @@ const Cart = () => {
             key={item.card.info.id}
             className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between "
           >
-            <div className="w-9/12 ">
+            <div className="w-3/12">
+              <img
+                className="w-28"
+                src={CDN_URL + item.card.info.imageId}
+                alt="dishImg"
+              ></img>
+            </div>
+            <div className="w-9/12 flex items-center justify-between ">
               <div className=" py-2">
                 <span>{item?.card?.info?.name}</span>
                 <br></br>
@@ -44,15 +58,16 @@ const Cart = () => {
                     : item?.card?.info?.defaultPrice / 100}
                 </span>
               </div>
-              <p className="text-xs m-3">{item?.card?.info?.description}</p>
-            </div>
-
-            <div className="w-3/12">
-              <img src={CDN_URL + item.card.info.imageId} alt="dishImg"></img>
+              <IoTrashBin
+                className="text-xl w-6 h-6 m-1 cursor-pointer hover:scale-110"
+                onClick={() => handleRemoveItem(item)}
+              />
             </div>
           </div>
         ))}
       </div>
+
+      <div></div>
     </div>
   );
 };

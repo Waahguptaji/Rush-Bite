@@ -58,32 +58,6 @@ const ItemList = ({ items, dummy }) => {
             <p className="text-xs m-3">{item?.card?.info?.description}</p>
           </div>
 
-          {/* <div className="w-3/12">
-            <img
-              className="rounded-md"
-              src={CDN_URL + item.card.info.imageId}
-              alt="dishImg"
-            ></img>
-            <div className="flex items-center justify-center">
-              <button
-                className="btn btn-square btn-xs btn-outline hover:bg-green-600"
-                onClick={() => handleRemoveItem(item)}
-              >
-                -
-              </button>
-
-              <span className="mx-2 text-lg">
-                {itemCount[item.card.info.id] || 0}
-              </span>
-
-              <button
-                className="btn btn-square btn-xs hover:bg-green-600 bg-green-600"
-                onClick={() => handleAddItem(item)}
-              >
-                +
-              </button>
-            </div>
-          </div> */}
           <div className="w-3/12">
             <img
               className="rounded-md object-cover h-32 w-full"
