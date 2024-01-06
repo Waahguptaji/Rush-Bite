@@ -5,9 +5,17 @@ const cartSlice = createSlice({
   initialState: {
     items: [],
     totalPrice: 0,
+    currentRestuarantId: null,
   },
   reducers: {
     addItems: (state, action) => {
+      //Only add from One resturant at a time Feature can't implement will implement later
+      /* if (action.payload.resID !== state.currentRestuarantId) {
+        state.items = [];
+        state.totalPrice = 0;
+        state.currentRestuarantId = action.payload.resID;
+       }*/
+
       //Mutating the state here
       state.items.push(action.payload);
       const newItemPrice =
@@ -31,6 +39,7 @@ const cartSlice = createSlice({
     clearCart: (state, action) => {
       state.items.length = 0; // => [ ]
       state.totalPrice = 0;
+      state.currentRestuarantId = null;
     },
   },
 });

@@ -5,14 +5,24 @@ import RestuarantCategory from "./RestuarantCategory";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { IoIosBicycle } from "react-icons/io";
-
+import { useDispatch } from "react-redux";
+import {
+  setRestuarantId,
+  setRestuarantInfo,
+} from "../utils/redux/restuarantSlice";
 const RestuarantMenu = () => {
+  const dispatch = useDispatch();
+
   const { resId } = useParams();
 
   const resInfo = useRestuarantMenu(resId);
+  console.log(resInfo);
 
   const [showIndex, setShowIndex] = useState(null);
   const dummy = "Dummy Data";
+
+  dispatch(setRestuarantId(resId));
+  dispatch(setRestuarantInfo(resInfo));
 
   if (resInfo === null) return <Shimmer />;
 
@@ -26,9 +36,9 @@ const RestuarantMenu = () => {
   } = resInfo?.cards[0]?.card?.card?.["info"];
 
   const { message } = resInfo?.cards[0]?.card?.card?.["info"]?.feeDetails;
-  const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card;
-  // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+  // const { itemCards } =
+  //   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card;
+  // // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(

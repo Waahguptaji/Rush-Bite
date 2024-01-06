@@ -2,12 +2,16 @@ import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
 import { addItems, removeItems } from "../utils/redux/cartSlice";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const ItemList = ({ items, dummy }) => {
   const dispatch = useDispatch();
   const [itemCount, setItemCount] = useState({});
 
-  const handleAddItem = (item) => {
+  //// const resID = useSelector((store) => store.restuarant.resoId);
+  //// console.log(resID);
+
+  const handleAddItem = (item, resID) => {
     // Here prev contains previous itemCounts state value
     // We return new state object with spread ...prev - this will keep existing key-value pairs intact
     // Then we update specific item.id count:
@@ -44,6 +48,7 @@ const ItemList = ({ items, dummy }) => {
           key={item.card.info.id}
           className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between "
         >
+          {console.log(item)}
           <div className="w-9/12 ">
             <div className=" py-2">
               <span>{item?.card?.info?.name}</span>
@@ -57,7 +62,6 @@ const ItemList = ({ items, dummy }) => {
             </div>
             <p className="text-xs m-3">{item?.card?.info?.description}</p>
           </div>
-
           <div className="w-3/12">
             <img
               className="rounded-md object-cover h-32 w-full"
@@ -79,9 +83,7 @@ const ItemList = ({ items, dummy }) => {
               <button
                 className="btn btn-square btn-xs bg-green-500 text-white hover:bg-green-600 focus:ring-green-500 focus:ring-opacity-50"
                 onClick={() => handleAddItem(item)}
-              >
-                +
-              </button>
+              ></button>
             </div>
           </div>
         </div>
