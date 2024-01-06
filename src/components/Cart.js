@@ -7,8 +7,14 @@ const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const itemTotal = useSelector((store) => store.cart.totalPrice);
   const resInfo = useSelector((store) => store.restuarant.restuarantInfo);
+  console.log(resInfo);
 
-  const dispatch = useDispatch();
+  const platformFee = 5;
+  const deliveryFees = resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees
+    ? resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees[0]?.fee / 100
+    : 11;
+  const gst = ((itemTotal / 100) * 5) / 100;
+  const totalToPay = itemTotal / 100 + deliveryFees + platformFee + gst;
 
   const handleClearItem = () => {
     //dispatching an action
@@ -21,18 +27,20 @@ const Cart = () => {
   };
 
   return (
-    <div className="text-center m-4 p-4 bg-mid-pink">
-      <h1 className="text-2xl font-bold">Cart</h1>
-      <button
-        className="p-2 m-2 bg-green-500 text-white rounded-lg"
-        onClick={handleClearItem}
-      >
-        Clear Cart
-      </button>
+    <div className="text-center bg-mid-pink  px-4 py-8 rounded-lg shadow-md">
+      <h1 className="text-3xl font-bold text-orange-600 mb-4">My Cart</h1>
+      <div className="mb-3">
+        <button
+          className=" bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full"
+          onClick={handleClearItem}
+        >
+          Clear Cart
+        </button>
+      </div>
       {cartItems.length === 0 ? (
         <h1 className="text-center m-5 text-3xl">Cart is Empty</h1>
       ) : (
-        <div className="w-6/12 bg-white text-sm font-normal">
+        <div className="flex flex-col w-1/2 mx-auto bg-white text-sm font-normal">
           {cartItems.map((item) => (
             <div key={item.card.info.id} className="p-2 m-2  text-left flex  ">
               <div className="w-2/12 mr-2">
@@ -61,21 +69,34 @@ const Cart = () => {
               </div>
             </div>
           ))}
-          <div className="text-left flex flex-col ">
-            <h1>Bill Details</h1>
+          <div className="text-left flex flex-col font-light text-gray-500 m-4 border-t border-gray-200 p-4 ">
+            <h1 className="text-xl font-medium text-gray-900 mb-2">
+              Bill Details
+            </h1>
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-gray-500">Item Total</p>
+              <span>₹{itemTotal / 100}</span>
+            </div>
             <p className="flex justify-between">
-              Item Total <span>₹{itemTotal / 100}</span>{" "}
+              Delivery Fees
+              <span>₹{deliveryFees}</span>{" "}
             </p>
-            <p>
-              Delivery Fees{" "}
-              <span>
-                ₹
-                {resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees[0].fee /
-                  100}
-              </span>{" "}
+            <hr />
+            <p className="flex justify-between">
+              Platform fee <span class="line-through">₹{platformFee}</span>
             </p>
-            <p>Platform fee</p>
-            <p>GST and Restaurant Charges</p>
+            <p className="flex justify-between">
+              GST and Restaurant Charges <span>₹{gst.toFixed(2)}</span>
+            </p>
+            <hr className="" />
+            <h2 className="flex justify-between font-bold text-black text-xl mb-4">
+              To Pay <span>₹{totalToPay.toFixed(2)}</span>
+            </h2>
+          </div>
+          <div className="mb-4">
+            <button className=" bg-green-500 hover:bg-green-700 hover:shadow-2xl text-white font-bold py-2 px-4 rounded-sm shadow-md ">
+              Proceed to Pay
+            </button>
           </div>
         </div>
       )}
