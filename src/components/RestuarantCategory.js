@@ -10,7 +10,7 @@ const RestuarantCategory = ({ data, showIndex, setShowIndex, dummy }) => {
   return (
     <div>
       {/* {Accordian Header} */}
-      <div className="w-6/12 mx-auto  bg-white shadow-lg my-4 p-4 ">
+      <div className=" sm:w-6/12 sm:mx-auto  bg-white shadow-lg my-4 p-4 ">
         <div
           className="flex items-center justify-between cursor-pointer"
           onClick={handleClick}
