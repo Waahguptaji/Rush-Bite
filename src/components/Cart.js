@@ -8,7 +8,7 @@ const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const itemTotal = useSelector((store) => store.cart.totalPrice);
   const resInfo = useSelector((store) => store.restuarant.restuarantInfo);
-  console.log(resInfo);
+  // console.log(resInfo);
 
   const platformFee = 5;
   const deliveryFees = resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees
@@ -62,7 +62,7 @@ const Cart = () => {
                       ? item?.card?.info?.price / 100
                       : item?.card?.info?.defaultPrice / 100}
                   </div>
-                  {console.log(item)}
+                  {/* {console.log(item)} */}
                   <IoTrashBin
                     className="text-xl w-6 h-6 m-1 cursor-pointer hover:scale-110"
                     onClick={() => handleRemoveItem(item)}

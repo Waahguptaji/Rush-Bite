@@ -12,7 +12,6 @@ import { IoCloseSharp } from "react-icons/io5";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
-  console.log("Header renders");
   const onlineStatus = useOnlineStatus();
 
   const { loggedInUser } = useContext(UserContext);
@@ -20,7 +19,6 @@ const Header = () => {
 
   //Subscribing to store using selector
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -43,14 +41,7 @@ const Header = () => {
         </NavLink>
       </div>
 
-      {/* MObile Nav */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="block sm:hidden text-3xl px-4"
-      >
-        {isOpen ? <IoCloseSharp /> : <GiHamburgerMenu />}
-      </button>
-      {isOpen && (
+      <div className="flex">
         <div className="flex sm:hidden items-center">
           {isAuthenticated && (
             <div className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
@@ -81,7 +72,30 @@ const Header = () => {
             </NavLink>
           </div>
         </div>
-      )}
+        {/* MObile Nav */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative sm:hidden text-3xl px-4 z-30"
+        >
+          {isOpen ? <IoCloseSharp /> : <GiHamburgerMenu />}
+        </button>
+        {/* Mobile Nav */}
+        {isOpen && (
+          <div className="flex absolute sm:hidden  w-svw h-svh items-center justify-center top-0 z-20 bg-white ">
+            <ul className="flex-col backdrop-blur-md items-center pl-0 z-10 m-0 justify-center">
+              <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone  w-100% text-center ">
+                <NavLink to="/">Home</NavLink>{" "}
+              </li>
+              <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone  w-100% text-center">
+                <NavLink to="/aboutUs">About</NavLink>
+              </li>
+              <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone  w-100% text-center">
+                <NavLink to="/contact">Contact Us</NavLink>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
 
       {/*Desktop Nav*/}
       <div className="hidden sm:flex items-center  ">
@@ -124,23 +138,6 @@ const Header = () => {
           </li>
         </ul>
       </div>
-
-      {/* Mobile Nav */}
-      {isOpen && (
-        <div className="flex absolute sm:hidden w-svw h-svh items-center justify-center top-0 z-10 bg-white ">
-          <ul className="flex-col  justify-between items-center">
-            <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone ">
-              <NavLink to="/">Home</NavLink>{" "}
-            </li>
-            <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
-              <NavLink to="/aboutUs">About</NavLink>
-            </li>
-            <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
-              <NavLink to="/contact">Contact Us</NavLink>
-            </li>
-          </ul>
-        </div>
-      )}
     </div>
   );
 };
