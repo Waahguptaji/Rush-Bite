@@ -3,7 +3,7 @@ import TestimonialSlider from "./TestimonialSlider";
 
 const AboutUs = () => {
   return (
-    <div className="aboutUs bg-light-pink h-100% absolute -z-10">
+    <div className="grid grid-flow-row bg-gray-200 w-full h-full ">
       <div className="flex">
         <div className="flex flex-col justify-center ml-40 mb-10 tracking-wider">
           <h1 className="font-bold text-5xl mb-4">A Neighborhood of Good</h1>
