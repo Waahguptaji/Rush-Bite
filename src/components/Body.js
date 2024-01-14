@@ -140,7 +140,7 @@ const Body = () => {
               Top restaurant chains in Indore
             </h2>
           </div>
-          <div className=" sm:grid sm:grid-cols-4 items-start gap-4 my-4 mx-2 overflow-x-scroll overflow-y-hidden no-scrollbar ">
+          <div className=" flex gap-4 my-4 mx-2 overflow-x-scroll overflow-y-hidden no-scrollbar ">
             {listofTopRestuarants.map(
               (
                 restaurant //Map function to iterate over the data dynamically
@@ -149,13 +149,16 @@ const Body = () => {
                   key={restaurant.info.id}
                   to={"/restuarants/" + restaurant.info.id}
                 >
-                  <RestuarantCard resData={restaurant} />
+                  <div className=" min-w-[200px] sm:min-w-[245px]">
+                    <RestuarantCard resData={restaurant} />
+                  </div>
                 </Link>
               )
             )}
           </div>
         </div>
       </div>
+
       <hr className="sm:w-9/12 sm:mx-auto mt-8 mb-8 " />
       {/* InfiniteScroll using react-component-infinite-scroll */}
       <div className=" sm:w-9/12 sm:mx-auto ">
