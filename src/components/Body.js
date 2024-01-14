@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CDN_URL } from "../utils/constants";
+import InfiniteShimmer from "./InfiniteShimmer";
 
 const Body = () => {
   //Local State Variable - Super powerful Variable
@@ -179,7 +180,7 @@ const Body = () => {
         dataLength={filterRestuarants.length}
         next={fetchMoreData}
         hasMore={hasMore}
-        loader={<Shimmer />} // Loader component while fetching data
+        loader={<InfiniteShimmer />} // Loader component while fetching data
         endMessage={<p>No more restaurants to show.</p>} // Message when no more data available
       >
         <div className=" w-full sm:w-9/12 sm:mx-auto ">
