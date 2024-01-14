@@ -10,7 +10,7 @@ import { FaClock } from "react-icons/fa";
 import { HiOutlineCurrencyRupee } from "react-icons/hi2";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { CiDiscount1 } from "react-icons/ci";
+import { TbDiscount2 } from "react-icons/tb";
 
 import {
   setRestuarantId,
@@ -91,9 +91,9 @@ const RestuarantMenu = () => {
           </div>
         </div>
         <hr className=" w-full mx-auto border-dashed" />
-        <div className="flex gap-8 mt-3">
+        <div className="flex gap-8 mt-3 font-extrabold text-gray-950 text-sm">
           <div className="flex items-center gap-2 ">
-            <FaClock /> {sla.deliveryTime} mins
+            <FaClock className="text-xl" /> {sla.deliveryTime} mins
           </div>
           <div className="flex  gap-2 items-center ">
             <HiOutlineCurrencyRupee className="text-xl" />
@@ -103,12 +103,14 @@ const RestuarantMenu = () => {
 
         <div className="flex mt-4 gap-2 overflow-y-scroll no-scrollbar">
           {offers.map((offer) => (
-            <div className="flex flex-col border rounded-md p-2 w-full whitespace-nowrap ">
+            <div className="flex flex-col border rounded-md text-gray-500 font-bold p-2 w-fit whitespace-nowrap ">
               <div className="flex text-sm items-center gap-2">
-                <CiDiscount1 />
+                <div className="text-amber-900 text-lg ">
+                  <TbDiscount2 />
+                </div>
                 {offer.info.header}
               </div>
-              <div className="flex gap-1 text-xs text-gray-600 font-light">
+              <div className="flex gap-1 text-[10px] text-gray-600 font-light">
                 <span>{offer.info.couponCode}</span>|
                 <span>{offer.info.description}</span>
               </div>
@@ -126,7 +128,7 @@ const RestuarantMenu = () => {
           key={category?.card?.card.name}
           data={category?.card?.card}
           showIndex={index === showIndex ? true : false}
-          setShowIndex={() => setShowIndex(index)}
+          setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
           dummy={dummy}
         />
       ))}

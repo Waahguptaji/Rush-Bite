@@ -5,7 +5,7 @@ import { IoIosArrowUp } from "react-icons/io";
 
 const RestuarantCategory = ({ data, showIndex, setShowIndex, dummy }) => {
   const handleClick = () => {
-    setShowIndex(showIndex === null ? true : showIndex === false ? true : null); // Toggle the showIndex state
+    setShowIndex(showIndex === false ? true : null); // Toggle the showIndex state
   };
   return (
     <div>
