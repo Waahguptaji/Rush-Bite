@@ -37,11 +37,5 @@ export const Profile = () => {
 
   const username = user.name.split("@")[0];
 
-  return (
-    isAuthenticated && (
-      <div>
-        <h2>Hi, {username}</h2>
-      </div>
-    )
-  );
+  return isAuthenticated && <h2>Hi, {username}</h2>;
 };

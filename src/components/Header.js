@@ -75,13 +75,13 @@ const Header = () => {
         {/* MObile Nav */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative sm:hidden text-3xl px-4 z-30"
+          className="relative sm:hidden text-3xl px-4 z-30 "
         >
           {isOpen ? <IoCloseSharp /> : <GiHamburgerMenu />}
         </button>
         {/* Mobile Nav */}
         {isOpen && (
-          <div className="flex absolute sm:hidden  w-svw h-svh items-center justify-center top-0 z-20 bg-white ">
+          <div className="flex absolute right-0 sm:hidden  w-[100vw] h-svh items-center justify-center top-0 z-20 bg-white transition-all ease-in duration-500">
             <ul className="flex-col backdrop-blur-md items-center pl-0 z-10 m-0 justify-center">
               <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone  w-100% text-center ">
                 <NavLink to="/">Home</NavLink>{" "}
