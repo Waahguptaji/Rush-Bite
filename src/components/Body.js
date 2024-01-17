@@ -6,12 +6,16 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CDN_URL } from "../utils/constants";
 import InfiniteShimmer from "./InfiniteShimmer";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Profile } from "./Auth";
 
 const Body = () => {
   //Local State Variable - Super powerful Variable
   const [listofRestuarants, setlistofRestuarants] = useState([]);
   const [listofTopRestuarants, setlistofTopRestuarants] = useState([]);
   const [filterRestuarants, setfilterRestuarants] = useState([]);
+
+  const { isAuthenticated } = useAuth0();
 
   const [searchText, setsearchText] = useState("");
   const [foodItem, setFoodItem] = useState([]);
@@ -31,6 +35,7 @@ const Body = () => {
     );
 
     const json = await data.json();
+    console.log(json.data);
 
     const foodItemsInfo =
       json?.data?.cards[0]?.card?.card?.imageGridCards?.info;
@@ -78,7 +83,12 @@ const Body = () => {
       <div className=" sm:w-9/12 sm:mx-auto ">
         <div className="p-4">
           <div className="mb-4">
-            <h2 className="font-bold text-2xl ">Sahil, What's on your mind?</h2>
+            {isAuthenticated && (
+              <span>
+                <Profile />,
+              </span>
+            )}
+            <h2 className="font-bold text-2xl "> What's on your mind?</h2>
           </div>
           <div className=" mx-[-16px] overflow-x-scroll overflow-y-hidden no-scrollbar">
             <div className=" grid grid-flow-col sm:flex sm:pt-0 ">
@@ -133,49 +143,51 @@ const Body = () => {
         </div>
       </div> */}
       <hr className="sm:w-9/12 sm:mx-auto mb-8  " />
-
-      <div className=" w-full sm:w-9/12 sm:mx-auto ">
-        <div className="px-4">
-          <div className="mb-4">
-            <h2 className="font-bold text-2xl ">
-              Top restaurant chains in Indore
-            </h2>
-          </div>
-          <div className=" flex gap-4 my-4 mx-2 overflow-x-scroll overflow-y-hidden no-scrollbar ">
-            {listofTopRestuarants.map(
-              (
-                restaurant //Map function to iterate over the data dynamically
-              ) => (
-                <Link
-                  key={restaurant.info.id}
-                  to={"/restuarants/" + restaurant.info.id}
-                >
-                  <div className=" min-w-[200px] sm:min-w-[245px]">
-                    <RestuarantCard resData={restaurant} />
-                  </div>
-                </Link>
-              )
-            )}
+      {listofTopRestuarants && (
+        <div className=" w-full sm:w-9/12 sm:mx-auto ">
+          <div className="px-4">
+            <div className="mb-4">
+              <h2 className="font-bold text-2xl ">
+                Top restaurant chains in Indore
+              </h2>
+            </div>
+            <div className=" flex gap-4 my-4 mx-2 overflow-x-scroll overflow-y-hidden no-scrollbar ">
+              {listofTopRestuarants.map(
+                (
+                  restaurant //Map function to iterate over the data dynamically
+                ) => (
+                  <Link
+                    key={restaurant.info.id}
+                    to={"/restuarants/" + restaurant.info.id}
+                  >
+                    <div className=" min-w-[200px] sm:min-w-[245px]">
+                      <RestuarantCard resData={restaurant} />
+                    </div>
+                  </Link>
+                )
+              )}
+            </div>
           </div>
         </div>
-      </div>
-
+      )}
       <hr className="sm:w-9/12 sm:mx-auto mt-8 mb-8 " />
       {/* InfiniteScroll using react-component-infinite-scroll */}
-      <div className=" sm:w-9/12 sm:mx-auto ">
-        <div className=" p-4 ">
-          <div className="font-bold text-2xl ">
-            Restaurants with online food delivery in Indore.{" "}
-          </div>
-          <div className="flex my-4 mt-5 gap-2 overflow-y-scroll no-scrollbar cursor-pointer">
-            {filters.map((filter) => (
-              <div className="flex text-sm border rounded-3xl px-2 p-[6px]  whitespace-nowrap ">
-                {filter.label}
-              </div>
-            ))}
+      {filters && (
+        <div className=" sm:w-9/12 sm:mx-auto ">
+          <div className=" p-4 ">
+            <div className="font-bold text-2xl ">
+              Restaurants with online food delivery in Indore.{" "}
+            </div>
+            <div className="flex my-4 mt-5 gap-2 overflow-y-scroll no-scrollbar cursor-pointer">
+              {filters.map((filter) => (
+                <div className="flex text-sm border rounded-3xl px-2 p-[6px]  whitespace-nowrap ">
+                  {filter.label}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <InfiniteScroll
         dataLength={filterRestuarants.length}
         next={fetchMoreData}
