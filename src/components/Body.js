@@ -8,6 +8,7 @@ import { CDN_URL } from "../utils/constants";
 import InfiniteShimmer from "./InfiniteShimmer";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "./Auth";
+import Footer from "./Footer";
 
 const Body = () => {
   //Local State Variable - Super powerful Variable
@@ -214,6 +215,7 @@ const Body = () => {
           </div>
         </div>
       </InfiniteScroll>
+      <Footer />
     </>
   );
 };
