@@ -1,6 +1,8 @@
 # Rush Bite 🚀
-
 Welcome to Rush Bite, your go-to food delivery web app!
+# My Awesome App 🚀
+[![Vercel Status](https://vercel.com/api/projects/prj_uKcXAp66jUlb3b9jzPmWYTXNQmTh/deployments/badge)](https://vercel.com/prj_uKcXAp66jUlb3b9jzPmWYTXNQmTh)
+
 
 ## Overview
 
@@ -9,9 +11,17 @@ Rush Bite is a dynamic food delivery web app developed using React, Tailwind CSS
 ## Features
 
 - **Responsive UI Components:** Crafted with care to ensure an intuitive and visually appealing user interface.
+
 - **Swiggy API Integration:** Real-time restaurant data fetched from Swiggy API keeps users informed about the latest offerings.
-- **Redux-Toolkit (RTK):** Efficient state management for seamless data flow across components.
-- **OAuth 2.0 Authentication:** Secure customer signups and logins for a hassle-free experience.
+
+- **Shimmer UI:** Enhance user experience with elegant and smooth loading transitions using Shimmer UI.
+
+- **Infinite Scroll:** Discover more restaurants effortlessly with the Infinite Scroll feature.
+
+- **RTK (Redux-Toolkit):**
+  - **Add to Cart:** Easily add items to your cart for a convenient checkout experience.
+  - **Remove from Cart:** Remove unwanted items from your cart with a simple click.
+  - **Clear Cart:** Start fresh by clearing your entire cart for a new ordering session.
 
 ## Technologies Used
 
@@ -21,4 +31,6 @@ Rush Bite is a dynamic food delivery web app developed using React, Tailwind CSS
 - Swiggy API
 - Redux-Toolkit (RTK)
 - OAuth 2.0
+
+
 
