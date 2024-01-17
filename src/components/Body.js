@@ -82,13 +82,13 @@ const Body = () => {
     <>
       <div className=" sm:w-9/12 sm:mx-auto ">
         <div className="p-4">
-          <div className="mb-4 flex flex-col">
+          <div className="mb-4 flex gap-2">
             {isAuthenticated && (
               <span className="font-bold text-2xl">
-                <Profile />
+                <Profile />,
               </span>
             )}
-            <h2 className="font-bold text-2xl "> ,What's on your mind?</h2>
+            <h2 className="font-bold text-2xl ">What's on your mind?</h2>
           </div>
           <div className=" mx-[-16px] overflow-x-scroll overflow-y-hidden no-scrollbar">
             <div className=" grid grid-flow-col sm:flex sm:pt-0 ">

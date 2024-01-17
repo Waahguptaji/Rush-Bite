@@ -18,7 +18,7 @@ export const LogoutButton = () => {
 
   return (
     <button
-      className="bg-light-pink text-base text-gray-800 font-medium py-2 px-6 border border-stone-400 rounded shadow  hover:bg-pink-tone hover:text-white"
+      className="border-none rounded-3xl  bg-pink-tone text-base text-white font-medium py-1 px-3 sm:border sm:border-stone-400 sm:rounded shadow-md"
       onClick={() =>
         logout({ logoutParams: { returnTo: window.location.origin } })
       }
@@ -37,13 +37,11 @@ export const Profile = () => {
 
   const username = user.name.split("@")[0];
 
-  return (
-    <>
-      {isAuthenticated && (
-        <div>
-          <h2>{username}</h2>
-        </div>
-      )}
-    </>
-  );
+  <>
+    {isAuthenticated && (
+      <div>
+        <h2>{username}</h2>
+      </div>
+    )}
+  </>;
 };
