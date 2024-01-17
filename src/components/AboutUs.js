@@ -1,5 +1,6 @@
 import aboutUsImg from "../images/aboutUsImg.jpeg";
 import TestimonialSlider from "./TestimonialSlider";
+import Footer from "./Footer";
 
 const AboutUs = () => {
   return (
@@ -28,6 +29,7 @@ const AboutUs = () => {
           <TestimonialSlider />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
