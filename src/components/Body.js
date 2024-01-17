@@ -85,7 +85,7 @@ const Body = () => {
           <div className="mb-4 flex gap-2">
             {isAuthenticated && (
               <span className="font-bold text-2xl">
-                <Profile />,
+                <Profile />
               </span>
             )}
             <h2 className="font-bold text-2xl ">What's on your mind?</h2>

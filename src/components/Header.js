@@ -45,9 +45,7 @@ const Header = () => {
         <div className="flex sm:hidden items-center">
           {isAuthenticated && (
             <div className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
-              <>
-                <Profile />
-              </>
+              <Profile />
             </div>
           )}
           <div className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
