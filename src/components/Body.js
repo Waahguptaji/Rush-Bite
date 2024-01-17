@@ -197,7 +197,7 @@ const Body = () => {
       >
         <div className=" w-full sm:w-9/12 sm:mx-auto ">
           <div className="px-4">
-            <div className="flex flex-col sm:grid sm:grid-cols-4 items-start gap-4 my-4 mx-2 ">
+            <div className="flex flex-col sm:grid sm:grid-cols-4 items-start gap-4 my-4 mx-2">
               {filterRestuarants.map(
                 (
                   restaurant //Map function to iterate over the data dynamically

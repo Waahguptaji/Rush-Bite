@@ -4,7 +4,7 @@ const RestuarantCard = (props) => {
   const { resData } = props;
   const { name, cuisines, avgRating, costForTwo, sla } = resData?.info; //optional chaining
   return (
-    <div className="grid grid-flow-col gap-4 sm:grid sm:gap-3 cursor-pointer items-center sm:justify-stretch sm:grid-flow-row ">
+    <div className="grid grid-flow-col gap-4 sm:grid sm:gap-3 cursor-pointer items-center sm:justify-stretch sm:grid-flow-row transition-transform ease-in-out transform hover:scale-95">
       <div className=" w-full h-full relative overflow-hidden drop-shadow-lg">
         <img
           className=" w-36 h-44  sm:w-60 sm:h-40 object-cover rounded-2xl "
