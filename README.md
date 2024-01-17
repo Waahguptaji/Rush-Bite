@@ -1,7 +1,7 @@
 # Rush Bite 🚀
 Welcome to Rush Bite, your go-to food delivery web app!
-# My Awesome App 🚀
-[![Vercel Status](https://vercel.com/api/projects/prj_uKcXAp66jUlb3b9jzPmWYTXNQmTh/deployments/badge)](https://vercel.com/prj_uKcXAp66jUlb3b9jzPmWYTXNQmTh)
+Check out the live version [here](https://rushbite.vercel.app).
+
 
 
 ## Overview
