@@ -9,6 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton, LogoutButton, Profile } from "./Auth";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
+import { FiSearch } from "react-icons/fi";
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
@@ -54,6 +55,11 @@ const Header = () => {
             ) : (
               <LoginButton className="rounded-2xl border-none" />
             )}
+          </div>
+          <div className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
+            <NavLink to="/search">
+              <FiSearch />
+            </NavLink>
           </div>
           <div className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
             <NavLink to="/cart">
@@ -102,7 +108,12 @@ const Header = () => {
       <div className="hidden sm:flex items-center  ">
         <ul className="flex  justify-between items-center">
           <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone ">
-            <NavLink to="/">Home</NavLink>{" "}
+            <NavLink to="/search">
+              <div className="flex items-center gap-2">
+                <FiSearch />
+                <p>Search</p>
+              </div>
+            </NavLink>
           </li>
           <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
             <NavLink to="/aboutUs">About</NavLink>

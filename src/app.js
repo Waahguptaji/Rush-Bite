@@ -14,6 +14,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/redux/appStore";
 import Cart from "./components/Cart";
 import { Auth0Provider } from "@auth0/auth0-react";
+import SearchBar from "./components/SearchBar";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
@@ -73,6 +74,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/search",
+        element: <SearchBar />,
       },
     ],
     errorElement: <Error />,
