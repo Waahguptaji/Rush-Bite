@@ -77,15 +77,20 @@ const Header = () => {
         </button>
         {/* Mobile Nav */}
         {isOpen && (
-          <div className="flex absolute right-0 sm:hidden  w-[100vw] h-svh items-center justify-center top-0 z-20 bg-white transition-all ease-in duration-500">
-            <ul className="flex-col backdrop-blur-md items-center pl-0 z-10 m-0 justify-center">
-              <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone  w-100% text-center ">
+          <div className="flex absolute right-0 sm:hidden  w-[50vw] shadow-md backdrop-blur-md h-svh items-center justify-center top-0 z-20 bg-white transition-all ease-in duration-500">
+            <ul
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
+              className="flex-col items-center pl-0 z-10 m-0 justify-center text-xl "
+            >
+              <li className="px-4 py-2 font-serif  text-light-gray hover:text-pink-tone  w-100% text-center ">
                 <NavLink to="/">Home</NavLink>{" "}
               </li>
-              <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone  w-100% text-center">
+              <li className="px-4 py-2 font-serif  text-light-gray hover:text-pink-tone  w-100% text-center">
                 <NavLink to="/aboutUs">About</NavLink>
               </li>
-              <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone  w-100% text-center">
+              <li className="px-4 py-2 font-serif text-light-gray hover:text-pink-tone  w-100% text-center">
                 <NavLink to="/contact">Contact Us</NavLink>
               </li>
             </ul>
@@ -119,11 +124,7 @@ const Header = () => {
           </li>
           {isAuthenticated && (
             <li className="px-4 font-serif text-lg text-light-gray hover:text-pink-tone">
-              (
-              <>
-                <Profile />
-              </>
-              )
+              <Profile />
             </li>
           )}
           <li className="px-4 font-serif text-lg text-light-gray">

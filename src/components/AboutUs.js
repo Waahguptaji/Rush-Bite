@@ -4,21 +4,25 @@ import Footer from "./Footer";
 
 const AboutUs = () => {
   return (
-    <div className="grid grid-flow-row bg-gray-200 w-full h-full ">
-      <div className="flex">
-        <div className="flex flex-col justify-center ml-40 mb-10 tracking-wider">
-          <h1 className="font-bold text-5xl mb-4">A Neighborhood of Good</h1>
-          <p className="leading-relaxed font-normal">
+    <div className="grid  grid-flow-row bg-gray-200 w-full h-full ">
+      <div className="flex flex-col p-12 sm:flex-row sm:p-20">
+        <div className="flex flex-col justify-center mb-10 tracking-wider ">
+          <h1 className="font-bold text-5xl mb-4 break-words">
+            A Neighborhood of Good
+          </h1>
+          <p className="leading-relaxed font-normal break-words">
             At RushBite, we celebrate the people behind every order. Our mission
             is to empower and grow local economies. When consumers get their
             goods, local merchants get business, and Rushers get paid.
           </p>
         </div>
-        <img
-          className="clipPath w-1/2  mt-6 mr-40 shadow-lg "
-          src={aboutUsImg}
-          alt="women delivering"
-        />
+        <div className="flex ">
+          <img
+            className=" clipPath shadow-lg "
+            src={aboutUsImg}
+            alt="women delivering"
+          />
+        </div>
       </div>
       <hr className="mt-6 w-3/4 mx-auto" />
       <div className="flex flex-col items-center ">
