@@ -1,4 +1,4 @@
-import { CDN_URL } from "../utils/constants";
+import { CDN_URL } from "../../utils/constants";
 import { FaStar } from "react-icons/fa";
 const RestuarantCard = (props) => {
   const { resData } = props;

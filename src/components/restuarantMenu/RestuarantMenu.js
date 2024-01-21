@@ -1,6 +1,6 @@
-import Shimmer from "./Shimmer";
+import Shimmer from "../shimmer/Shimmer";
 import { useParams } from "react-router-dom";
-import useRestuarantMenu from "../utils/useRestuarantMenu";
+import useRestuarantMenu from "../../utils/useRestuarantMenu";
 import RestuarantCategory from "./RestuarantCategory";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
@@ -15,7 +15,7 @@ import { TbDiscount2 } from "react-icons/tb";
 import {
   setRestuarantId,
   setRestuarantInfo,
-} from "../utils/redux/restuarantSlice";
+} from "../../utils/redux/restuarantSlice";
 const RestuarantMenu = () => {
   const dispatch = useDispatch();
 

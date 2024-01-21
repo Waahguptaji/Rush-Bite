@@ -1,14 +1,14 @@
-import RestuarantCard from "./RestuarantCard";
+import RestuarantCard from "../restuarantCard/RestuarantCard";
 import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
+import Shimmer from "../shimmer/Shimmer";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { CDN_URL } from "../utils/constants";
-import InfiniteShimmer from "./InfiniteShimmer";
+import { CDN_URL } from "../../utils/constants";
+import InfiniteShimmer from "../shimmer/InfiniteShimmer";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Profile } from "./Auth";
-import Footer from "./Footer";
+import { Profile } from "../auth/Auth";
+import Footer from "../footer/Footer";
 
 const Body = () => {
   //Local State Variable - Super powerful Variable

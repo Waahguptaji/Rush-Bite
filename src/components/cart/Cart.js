@@ -1,8 +1,8 @@
 import { Selector, useDispatch, useSelector } from "react-redux";
-import { CDN_URL } from "../utils/constants";
-import { clearCart, removeItems } from "../utils/redux/cartSlice";
+import { CDN_URL } from "../../utils/constants";
+import { clearCart, removeItems } from "../../utils/redux/cartSlice";
 import { IoTrashBin } from "react-icons/io5";
-import emptyCart from "../images/emptyCart.png";
+import emptyCart from "../../images/emptyCart.png";
 import { Link } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();

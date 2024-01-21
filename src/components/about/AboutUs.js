@@ -1,6 +1,6 @@
-import aboutUsImg from "../images/aboutUsImg.jpeg";
+import aboutUsImg from "../../images/aboutUsImg.jpeg";
 import TestimonialSlider from "./TestimonialSlider";
-import Footer from "./Footer";
+import Footer from "../footer/Footer";
 
 const AboutUs = () => {
   return (

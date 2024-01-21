@@ -1,5 +1,4 @@
 import React from "react";
-import resLogo from "../images/resLogoMobile.png";
 
 function Footer() {
   return (

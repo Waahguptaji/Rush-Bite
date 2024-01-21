@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { CDN_URL } from "../utils/constants";
-import { addItems, removeItems } from "../utils/redux/cartSlice";
+import { CDN_URL } from "../../utils/constants";
+import { addItems, removeItems } from "../../utils/redux/cartSlice";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 

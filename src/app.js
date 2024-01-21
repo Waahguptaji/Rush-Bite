@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react"; //importing React from node module
 import ReactDOM from "react-dom/client"; //importing React from node module of react
-import Body from "./components/Body";
-import Header from "./components/Header";
+import Body from "./components/body/Body";
+import Header from "./components/navbar/Header";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Contact from "./components/Contact";
-import AboutUs from "./components/AboutUs";
+import Contact from "./components/contact/Contact";
+import AboutUs from "./components/about/AboutUs";
 import Error from "./components/Error";
 import { Outlet } from "react-router-dom";
-import RestuarantMenu from "./components/RestuarantMenu";
+import RestuarantMenu from "./components/restuarantMenu/RestuarantMenu";
 
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/redux/appStore";
-import Cart from "./components/Cart";
+import Cart from "./components/cart/Cart";
 import { Auth0Provider } from "@auth0/auth0-react";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/search/SearchBar";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();

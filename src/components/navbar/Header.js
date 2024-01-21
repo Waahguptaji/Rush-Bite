@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import resLogo from "../images/resLogo.png";
-import resLogoMobile from "../images/resLogoMobile.png";
+import resLogo from "../../images/resLogo.png";
+import resLogoMobile from "../../images/resLogoMobile.png";
 import { NavLink } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
+import useOnlineStatus from "../../utils/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
 import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { LoginButton, LogoutButton, Profile } from "./Auth";
+import { LoginButton, LogoutButton, Profile } from "../auth/Auth";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
