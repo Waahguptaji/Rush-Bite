@@ -53,19 +53,6 @@ const SearchBar = () => {
         </div>
         <SearchList data={searchResults} />
       </div>
-      {/* <div>
-          <button
-            className="px-4 py-1 bg-pink-tone m-4 rounded-md  "
-            onClick={() => {
-              let filterList = listofRestuarants.filter(
-                (res) => res.info.avgRating > 4
-              );
-              setfilterRestuarants(filterList);
-            }}
-          >
-            Top-Rated Restaurant
-          </button>
-        </div> */}
     </div>
   );
 };

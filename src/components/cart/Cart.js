@@ -9,14 +9,16 @@ const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const itemTotal = useSelector((store) => store.cart.totalPrice);
   const resInfo = useSelector((store) => store.restuarant.restuarantInfo);
-  // console.log(resInfo);
+  console.log(resInfo);
 
-  const platformFee = 5;
-  const deliveryFees = resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees
-    ? resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees[0]?.fee / 100
-    : 11;
-  const gst = ((itemTotal / 100) * 5) / 100;
-  const totalToPay = itemTotal / 100 + deliveryFees + platformFee + gst;
+  if (cartItems.length !== 0) {
+    const platformFee = 5;
+    const deliveryFees = resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees
+      ? resInfo?.cards[0]?.card?.card?.info?.feeDetails?.fees[0]?.fee / 100
+      : 11;
+    const gst = ((itemTotal / 100) * 5) / 100;
+    const totalToPay = itemTotal / 100 + deliveryFees + platformFee + gst;
+  }
 
   const handleClearItem = () => {
     //dispatching an action

@@ -10,6 +10,26 @@ import { LoginButton, LogoutButton, Profile } from "../auth/Auth";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
+import { motion } from "framer-motion";
+
+const variants = {
+  open: {
+    clipPath: "circle(1200px at 0px 0px)", //Here I am gving the circle size bigger then the width and height of the div so that it can cover the whole div and make it look like a circle but it is constrained by div to rectangle
+    transition: {
+      type: "spring",
+      stiffness: 20,
+    },
+  },
+  closed: {
+    clipPath: "circle(30px at 50px 50px)",
+    transition: {
+      delay: "0.5s",
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
 
 const Header = () => {
   const [btnNameReact, setbtnNameReact] = useState("Login");
@@ -83,24 +103,32 @@ const Header = () => {
         </button>
         {/* Mobile Nav */}
         {isOpen && (
-          <div className="flex absolute right-0 sm:hidden  w-[50vw] shadow-md backdrop-blur-md h-svh items-center justify-center top-0 z-20 bg-white transition-all ease-in duration-500">
-            <ul
-              onClick={() => {
-                setIsOpen(!isOpen);
-              }}
-              className="flex-col items-center pl-0 z-10 m-0 justify-center text-xl "
+          <motion.div
+            animate={isOpen ? "open" : "closed"}
+            className="flex flex-col items-center justify-center bg-white"
+          >
+            <motion.div
+              variants={variants}
+              className="flex absolute right-0 sm:hidden  w-[50vw] shadow-md backdrop-blur-md h-svh items-center justify-center top-0 bg-slate-50 transition-all ease-in duration-500"
             >
-              <li className="px-4 py-2 font-serif  text-light-gray hover:text-pink-tone  w-100% text-center ">
-                <NavLink to="/">Home</NavLink>{" "}
-              </li>
-              <li className="px-4 py-2 font-serif  text-light-gray hover:text-pink-tone  w-100% text-center">
-                <NavLink to="/aboutUs">About</NavLink>
-              </li>
-              <li className="px-4 py-2 font-serif text-light-gray hover:text-pink-tone  w-100% text-center">
-                <NavLink to="/contact">Contact Us</NavLink>
-              </li>
-            </ul>
-          </div>
+              <ul
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                }}
+                className="flex-col items-center pl-0 z-10 m-0 justify-center text-xl "
+              >
+                <li className="px-4 py-2 font-serif  text-light-gray hover:text-pink-tone  w-100% text-center ">
+                  <NavLink to="/">Home</NavLink>{" "}
+                </li>
+                <li className="px-4 py-2 font-serif  text-light-gray hover:text-pink-tone  w-100% text-center">
+                  <NavLink to="/aboutUs">About</NavLink>
+                </li>
+                <li className="px-4 py-2 font-serif text-light-gray hover:text-pink-tone  w-100% text-center">
+                  <NavLink to="/contact">Contact Us</NavLink>
+                </li>
+              </ul>
+            </motion.div>
+          </motion.div>
         )}
       </div>
 
