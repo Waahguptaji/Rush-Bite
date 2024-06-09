@@ -10,22 +10,21 @@ const SearchBar = () => {
   const [searchText, setsearchText] = useState("");
 
   useEffect(() => {
-    if (searchText.length > 2) {
+    const getData = setTimeout(() => {
       fetchData();
-    }
+    }, 500);
     if (!searchText) {
       setSearchResults([]);
     }
+    return () => clearTimeout(getData);
   }, [searchText]);
 
   const fetchData = async () => {
-    const SEARCH_SUGGESTIONS = `https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Fsearch%2Fsuggest%3Flat%3D27.157966%26lng%3D78.395802%26str%3D${searchText}%26trackingId%3Dnull`;
+    const SEARCH_SUGGESTIONS = `https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/search/suggest?lat=22.6812247&lng=75.8654247&str=${searchText}&trackingId=undefined`;
     const data = await fetch(SEARCH_SUGGESTIONS);
     const json = await data.json();
     setSearchResults(json?.data?.suggestions);
   };
-
-  console.log(searchResults);
 
   const handleSearch = (event) => {
     setsearchText(event.target.value);
